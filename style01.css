@@ -55,7 +55,8 @@ a {
 		}
 
 		.topnav a.active { /* Add a color to the active/current link */
-			background-color: rgb(188, 15, 15);
+			/*background-color: rgb(188, 15, 15);*/
+            background-color:darkblue;
 			color: white;
 		}
 
