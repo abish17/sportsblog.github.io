@@ -63,17 +63,18 @@ a {
 			margin-left: 15px;
 		}
 .content {
-    width:80%;
+    width:60%;
     margin-left:10%;
     text-align: left;
 }
 .blog {
-    width: 80%;
+    width: 60%;
     height: 80%;
-    margin-left: 10%;
+    margin-left: 8px;
     text-align: left;
     border: 2px solid rgb(51, 51, 51);
     border-radius: 3px;
+    display:inline-block;
 }
 .post {
     padding: 5px 5px 8px 10px;
@@ -83,17 +84,52 @@ a {
     border-color:darkgray;
     margin-bottom:5px;
 }
-iframe {
-    margin-left:10%;
-    width:80%;
-    height:380px;
-    margin-top:5px;
-}
+
 .scores {
-    width: 80%;
+    width: 15%;
     height: 80%;
-    margin-left: 10%;
+    margin-left: 8px;
     text-align: left;
     border: 2px solid rgb(51, 51, 51);
     border-radius: 3px;
+    display:inline-block;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    background-color: white;
+    padding: 5px;
+    text-align:center;
+}
+table {
+    border: 2px solid black;
+}
+th {
+    border: 1px solid rgb(195, 199, 211);
+}
+td {
+    border: 1px solid rgb(195, 199, 211);
+}
+.period_head {
+    width: 40px;
+    text-align: center;
+    background-color:lightgray;
+}
+td.team16.home {
+    background-color: rgb(188, 15, 15);
+    color:white;
+}
+td.team16.away {
+    background-color:white;
+}
+td.away {
+    background-color: lightgray;
+    border-bottom: 2px solid black;
+}
+td.home {
+    background-color: lightgray;
+    border-bottom: 2px solid black;
+}
+td.winner {
+    font-weight: bold;
 }
