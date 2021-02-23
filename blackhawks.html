@@ -6,7 +6,7 @@
     <meta charset="utf-8" content="width=device-width, initial-scale=1" />
     <title>Untitled</title>
 </head>
-<body onload="showLineScore()">
+<body onload="showLineScore(), getInfo()">
     <h1>
         <img src="Chicago_Blackhawks_logo.svg" alt="Blackhawks" style="float:left; margin-left:200px; height:65px;" />
         <img src="Atlanta_Falcons_logo.svg" alt="Falcons" style="float:left; margin-left:70px; height:65px; opacity:0.6;" />
@@ -23,60 +23,57 @@
         <li><a href="cubs.html">Cubs</a></li>
         <li><a href="other.html">Other</a></li>
     </ul>
-    <div class="content">
-        <p class="description">
-        Here is where I will write things about the Chicago Blackhaws.<br />
-        #Firestan</p>
-
+    <div id="scores">
     </div>
-
-    <div class="scores">
+    <div class="content">
         <table class="prevGameBS">
-            <tbody>
-                <tr>
-                    <th id="date"></th>
-                    <th class="period_head">1st</th>
-                    <th class="period_head">2nd</th>
-                    <th class="period_head">3rd</th>
-                    <th class="period_head">Final</th>
-                </tr>
-                <tr>
-                    <th id="homeTeamName">Home</th>
-                    <td class="period_scores, home" id="hGP1">1</td>
-                    <td class="period_scores, home" id="hGP2">1</td>
-                    <td class="period_scores, home" id="hGP3">1</td>
-                    <td class="period_scores, home" id="hGPF">1</td>
-                </tr>
-                <tr>
-                    <th id="awayTeamName">Away</th>
-                    <td class="period_scores, away" id="aGP1">2</td>
-                    <td class="period_scores, away" id="aGP2">2</td>
-                    <td class="period_scores, away" id="aGP3">2</td>
-                    <td class="period_scores, away" id="aGPF">2</td>
-                </tr>
+            <tbody id="prevGameBody">
+
+
+
             </tbody>
         </table>
+        <div class="blog">
+            <div class="post">
+                This is a post
+            </div>
+            <div class="post">
+                This is another post. I've got a lot to say in this post. It's probably about Stan Bowman #FireStan.
+                I just need to fill up this space and see what everything looks like on a post with multiple lines.
+                Need to keep typing blah blah blah.
+                More to say. Go Hawks baby. Still writing. Very long post. Mooooorrrrrreeeee text here.
+            </div>
+            <div class="post">
+                This is another post. I've got a lot to say in this post. It's probably about Stan Bowman #FireStan.
+                I just need to fill up this space and see what everything looks like on a post with multiple lines.
+                Need to keep typing blah blah blah.
+                More to say. Go Hawks baby. Still writing. Very long post. Mooooorrrrrreeeee text here.
+            </div>
+        </div>
     </div>
-    <div class="blog">
-        <div class="post">
-            This is a post
-        </div>
-        <div class="post">
-            This is another post. I've got a lot to say in this post. It's probably about Stan Bowman #FireStan.
-            I just need to fill up this space and see what everything looks like on a post with multiple lines.
-            Need to keep typing blah blah blah.
-            More to say. Go Hawks baby. Still writing. Very long post. Mooooorrrrrreeeee text here.
-        </div>
-        <div class="post">
-            This is another post. I've got a lot to say in this post. It's probably about Stan Bowman #FireStan.
-            I just need to fill up this space and see what everything looks like on a post with multiple lines.
-            Need to keep typing blah blah blah.
-            More to say. Go Hawks baby. Still writing. Very long post. Mooooorrrrrreeeee text here.
-        </div>
-        <button class="button" id="button01">Get Info</button>
-            <p id="display"></p>
-
-</div>
-    <script src="script03.js"></script>
+    <script src="script04.js"></script>
 </body>
 </html>
+
+<!--<tr>
+    <th id="date"></th>
+    <th class="period_head">1st</th>
+    <th class="period_head">2nd</th>
+    <th class="period_head">3rd</th>
+    <th class="period_head">Final</th>
+</tr>
+<tr>
+    <th id="homeTeamName">Home</th>
+    <td class="period_scores, home" id="hGP1">1</td>
+    <td class="period_scores, home" id="hGP2">1</td>
+    <td class="period_scores, home" id="hGP3">1</td>
+    <td class="period_scores, home" id="hGPF">1</td>
+</tr>
+<tr>
+    <th id="awayTeamName">Away</th>
+    <td class="period_scores, away" id="aGP1">2</td>
+    <td class="period_scores, away" id="aGP2">2</td>
+    <td class="period_scores, away" id="aGP3">2</td>
+    <td class="period_scores, away" id="aGPF">2</td>
+</tr>-->
+

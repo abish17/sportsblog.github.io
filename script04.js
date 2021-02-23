@@ -62,6 +62,7 @@ function scheduleInfo(dates, seasonDates) {
             //html += result;
         }
         html += insertHTML;
+        //document.getElementById("scheduleBody").appendChild(insertHTML);
     }
     //document.getElementById("scheduleBody").innerText = html;
     document.getElementById("scheduleBody").innerHTML = html;
@@ -76,19 +77,10 @@ function getGameID(xhttp) { //need gameID to get the correct link for last Chica
 }
 
 function getLineScore(xhttp) {
-    var response = JSON.parse(xhttp.responseText)
-
-    homeTeam = response.teams.home.team.name;
-    hGP1 = response.periods[0].home.goals;
-    hGP2 = response.periods[1].home.goals;
-    hGP3 = response.periods[2].home.goals;
-    hGPF = response.teams.home.goals;
-
-    awayTeam = response.teams.away.team.name;
-    aGP1 = response.periods[0].away.goals;
-    aGP2 = response.periods[1].away.goals;
-    aGP3 = response.periods[2].away.goals;
-    aGPF = response.teams.away.goals;
+    var response = JSON.parse(xhttp.responseText);
+    var html = "";
+    var homeGoals = [];
+    var awayGoals = [];
 
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var rawDate = response.periods[0].startTime;
@@ -98,18 +90,35 @@ function getLineScore(xhttp) {
     var month = months[rawMonth];
     var day = d.getDate();
 
-    document.getElementById("date").innerHTML = month + " " + day;
-    document.getElementById("homeTeamName").innerHTML = homeTeam;
-    document.getElementById("hGP1").innerHTML = hGP1;
-    document.getElementById("hGP2").innerHTML = hGP2;
-    document.getElementById("hGP3").innerHTML = hGP3;
-    document.getElementById("hGPF").innerHTML = hGPF;
+    html += "<tr><th id='date'>" + month + " " + day +"</th>"; //start date and period row
+    var periods = response.periods;
+    var period;
+    for (period in periods) {
+        html += "<th class='period_head'>" + periods[period].ordinalNum + "</th>"
+        homeGoals[periods[period].num] = periods[period].home.goals; //save goals for each team in array
+        awayGoals[periods[period].num] = periods[period].away.goals;
+    }
+    html += "<th class='period_head'>Final </th></tr>"; //end of date and period row
 
-    document.getElementById("awayTeamName").innerHTML = awayTeam;
-    document.getElementById("aGP1").innerHTML = aGP1;
-    document.getElementById("aGP2").innerHTML = aGP2;
-    document.getElementById("aGP3").innerHTML = aGP3;
-    document.getElementById("aGPF").innerHTML = aGPF;
+    var awayTeam = response.teams.away.team.name;
+    html += "<tr><th id='prevGame_awayName'>" + awayTeam + "</th>";//start away row
+    var goalsAway;
+    for (goalsAway in awayGoals) {
+        html += "<td class='period_scores away'>" + awayGoals[goalsAway] + "</td>"; //access goals array
+    }
+    var awayFinal = response.teams.away.goals;
+    html += "<td class='period_scores away'>" + awayFinal +"</td></tr>"; //end of away row
+
+    var homeTeam = response.teams.home.team.name;
+    html += "<tr><th id='prevGame_homeName'>" + homeTeam + "</th>"; //start home row
+    var goalsHome;
+    for (goalsHome in homeGoals) {
+        html += "<td class='period_scores home'>" + homeGoals[goalsHome] + "</td>"; //access goals array
+    }
+    var homeFinal = response.teams.home.goals;
+    html += "<td class='period_scores home'>" + homeFinal + "</td></tr>"; //end home row
+
+    document.getElementById("prevGameBody").innerHTML = html; //insert into html
     return -1;
 }
 
@@ -146,7 +155,6 @@ function findAbbr(text, awayID, homeID) {
 }
 
 function findWinner(text, gameID, awayID, awayScore, homeID, homeScore) {
-    //var game = document.getElementByID(gameID);
     if (awayScore > homeScore) {
         var arr = text.split("away team");
         arr[0] += "away team winner";
@@ -154,8 +162,6 @@ function findWinner(text, gameID, awayID, awayScore, homeID, homeScore) {
         subArr[0] += "away score winner";
         arr[1] = subArr[0] + subArr[1];
         text = arr[0] + arr[1];
-        //document.getElementById("display").innerText = arr[1];
-    //document.getElementById("display").innerHTML = game.getElementsByClassName("away")[0].classList;
     }
     else if (homeScore > awayScore) {
         var arr = text.split("home team");
@@ -164,9 +170,7 @@ function findWinner(text, gameID, awayID, awayScore, homeID, homeScore) {
         subArr[0] += "home score winner";
         arr[1] = subArr[0] + subArr[1];
         text = arr[0] + arr[1];
-        //document.getElementById("display").innerText = arr1[0] + arr1[1];
     }
-    //text = arr[0] + arr[1];
     return text;
 }
 
